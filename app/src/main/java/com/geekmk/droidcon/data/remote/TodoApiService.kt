@@ -1,4 +1,9 @@
 package com.geekmk.droidcon.data.remote
 
-class TodoApiService {
+
+interface TodoApiService {
+
+    fun getTodoItems()
+
+    fun addTodoItem()
 }

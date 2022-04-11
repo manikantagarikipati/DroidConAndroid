@@ -1,18 +1,20 @@
 package com.geekmk.droidcon.data.repository
 
-interface TodoListRepository {
-    fun getListItems()
+import com.geekmk.droidcon.data.model.TodoDataItem
+import javax.inject.Inject
 
-    fun addTodoItem()
+interface TodoListRepository {
+    fun getListItems(): List<TodoDataItem>
+
+    fun addTodoItem(todoDataItem: TodoDataItem)
 }
 
-class TodoListRepositoryImpl:TodoListRepository{
-    override fun getListItems() {
-        TODO("Not yet implemented")
+class TodoListRepositoryImpl @Inject constructor() : TodoListRepository {
+    override fun getListItems(): List<TodoDataItem> {
+        return emptyList()
     }
 
-    override fun addTodoItem() {
+    override fun addTodoItem(todoDataItem: TodoDataItem) {
         TODO("Not yet implemented")
     }
-
 }
