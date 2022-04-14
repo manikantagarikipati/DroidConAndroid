@@ -11,6 +11,6 @@ interface AddTodoListItemUseCase {
 
 class AddTodoListItemUseCaseImpl @Inject constructor(val repository: TodoListRepository):AddTodoListItemUseCase{
     override fun execute(title: String):TodoDataItem {
-        return TodoDataItem(title,Calendar.getInstance().timeInMillis)
+        return repository.addTodoItem(title)
     }
 }

@@ -9,8 +9,8 @@ interface FetchTodoListUseCase {
     fun execute(): List<TodoDataItem>
 }
 
-class FetchTodoListUseCaseImpl @Inject constructor(val repository: TodoListRepository) : FetchTodoListUseCase {
+class FetchTodoListUseCaseImpl @Inject constructor(private val repository: TodoListRepository) : FetchTodoListUseCase {
     override fun execute(): List<TodoDataItem> {
-        return listOf(TodoDataItem("Mani",Calendar.getInstance().timeInMillis))
+        return repository.getListItems()
     }
 }
