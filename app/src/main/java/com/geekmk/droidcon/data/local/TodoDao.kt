@@ -18,7 +18,7 @@ interface TodoDao {
     fun insert(todo: Todo):Long
 
     @Query("SELECT * FROM todo WHERE id=:id")
-    fun loadSingle(id: Long): Todo
+    fun loadSingle(id: Long): Todo?
 
     @Delete
     fun delete(todoItem: Todo)
