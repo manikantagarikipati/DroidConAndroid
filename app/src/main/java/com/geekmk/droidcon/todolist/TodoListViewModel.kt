@@ -3,7 +3,6 @@ package com.geekmk.droidcon.todolist
 import android.view.MenuItem
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.geekmk.droidcon.R
 import com.geekmk.droidcon.R.id.addItem
 import com.geekmk.droidcon.domain.usecase.AddTodoListItemUseCase
 import com.geekmk.droidcon.domain.usecase.FetchTodoListUseCase
@@ -22,22 +21,22 @@ class TodoListViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun fetchTodoList() {
-        viewModelScope.launch(Dispatchers.IO){
+        viewModelScope.launch(Dispatchers.IO) {
             val listItems = fetchTodoListUseCase.execute().map {
                 TodoListViewDataModel(it.title, it.createdTs.toString())
             }
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
                 todoListAdapter.updateListItems(listItems)
             }
         }
     }
 
     fun addTodoItem() {
-        viewModelScope.launch(Dispatchers.IO){
+        viewModelScope.launch(Dispatchers.IO) {
             val insertedItem = addTodoListItemUseCase.execute(title = "DroidConf Info").let {
                 TodoListViewDataModel(it.title, it.createdTs.toString())
             }
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
                 todoListAdapter.addItem(insertedItem)
             }
         }

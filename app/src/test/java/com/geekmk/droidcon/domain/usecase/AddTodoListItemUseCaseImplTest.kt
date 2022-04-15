@@ -10,6 +10,8 @@ import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.doThrow
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.stub
+import org.mockito.kotlin.times
+import org.mockito.kotlin.verify
 
 class AddTodoListItemUseCaseImplTest {
     lateinit var useCase: AddTodoListItemUseCase
@@ -23,12 +25,11 @@ class AddTodoListItemUseCaseImplTest {
 
     @Test
     fun `addTodoItem should return the added item`() {
-
         repository.stub {
-            on { addTodoItem("title") } doReturn TodoDataItem("title",1234)
+            on { addTodoItem("title") } doReturn TodoDataItem("title", 1234)
         }
-
-        Assertions.assertEquals(TodoDataItem("title", 1234), repository.addTodoItem("title"))
+        Assertions.assertEquals(TodoDataItem("title", 1234), useCase.execute("title"))
+        verify(repository, times(1)).addTodoItem("title")
     }
 
     @Test
@@ -36,8 +37,8 @@ class AddTodoListItemUseCaseImplTest {
         repository.stub {
             on { addTodoItem("title") } doThrow Exception("Error adding item")
         }
-
-        val exception = assertThrows<java.lang.Exception> { repository.addTodoItem("title") }
+        val exception = assertThrows<java.lang.Exception> { useCase.execute("title") }
         Assertions.assertEquals("Error adding item", exception.message)
+        verify(repository, times(1)).addTodoItem("title")
     }
 }

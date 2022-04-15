@@ -7,5 +7,4 @@ class TimeUtil {
     fun getTimeNow():Long{
         return Calendar.getInstance().timeInMillis
     }
-
 }

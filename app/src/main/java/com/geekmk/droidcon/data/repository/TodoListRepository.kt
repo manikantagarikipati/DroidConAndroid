@@ -1,5 +1,6 @@
 package com.geekmk.droidcon.data.repository
 
+import com.geekmk.droidcon.data.exception.AddItemException
 import com.geekmk.droidcon.data.local.Todo
 import com.geekmk.droidcon.data.local.TodoDao
 import com.geekmk.droidcon.data.model.TodoDataItem
@@ -30,6 +31,6 @@ class TodoListRepositoryImpl @Inject constructor(
         val insertedId = dao.insert(Todo(id = 0, title = title, createdTime = timeUtil.getTimeNow()))
         return dao.loadSingle(insertedId)?.let {
             TodoDataItem(it.title,it.createdTime)
-        }?:throw Exception("Error Adding Item")
+        }?:throw AddItemException("Error Adding Item")
     }
 }

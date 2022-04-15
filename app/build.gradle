@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 }
+apply plugin: "io.gitlab.arturbosch.detekt"
 
 android {
     compileSdk 32

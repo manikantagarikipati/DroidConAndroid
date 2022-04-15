@@ -12,7 +12,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(ViewModelComponent::class)
-abstract class RepositoryModule {
+interface RepositoryModule {
     @Binds
-    abstract fun provideTodoRepository(todoListRepositoryImpl: TodoListRepositoryImpl): TodoListRepository
+    fun provideTodoRepository(todoListRepositoryImpl: TodoListRepositoryImpl): TodoListRepository
 }

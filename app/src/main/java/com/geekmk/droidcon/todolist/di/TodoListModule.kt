@@ -8,7 +8,7 @@ import dagger.hilt.android.components.FragmentComponent
 
 @Module
 @InstallIn(FragmentComponent::class)
-abstract class TodoListModule {
+interface TodoListModule {
     @Binds
-    abstract fun bindTodoListAdapter(todoListAdapter: TodoListAdapter): TodoListAdapter
+    fun bindTodoListAdapter(todoListAdapter: TodoListAdapter): TodoListAdapter
 }

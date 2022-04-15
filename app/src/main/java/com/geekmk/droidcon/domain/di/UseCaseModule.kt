@@ -11,12 +11,12 @@ import dagger.hilt.android.components.ViewModelComponent
 
 @Module
 @InstallIn(ViewModelComponent::class)
-abstract class UseCaseModule {
+interface UseCaseModule {
 
     @Binds
-    abstract fun bindFetchTodoListUseCase(fetchTodoListUseCase: FetchTodoListUseCaseImpl): FetchTodoListUseCase
+    fun bindFetchTodoListUseCase(fetchTodoListUseCase: FetchTodoListUseCaseImpl): FetchTodoListUseCase
 
     @Binds
-    abstract fun bindAddTodoListUseCase(addTodoListItemUseCase: AddTodoListItemUseCaseImpl): AddTodoListItemUseCase
+    fun bindAddTodoListUseCase(addTodoListItemUseCase: AddTodoListItemUseCaseImpl): AddTodoListItemUseCase
 
 }
